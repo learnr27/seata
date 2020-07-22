@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: org.gjt.mm.mysql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123456
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.33.88:8848
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.application.name}-group
+  enable-auto-data-source-proxy: true
+  use-jdk-proxy: false
+  excludes-for-auto-proxying: firstClassNameForExclude,secondClassNameForExclude
+  service:
+    vgroup-mapping:
+      order-service-group: default
+    grouplist:
+      default: 127.0.0.1:8091
+    enable-degrade: false
+    disable-global-transaction: false
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 192.168.33.88:8848
+      group: "SEATA_GROUP"
+      namespace:
+      username: ""
+      password: ""

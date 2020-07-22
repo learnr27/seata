@@ -1,0 +1,8 @@
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\mapper\ProductMapper.java
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\service\ProductService.java
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\entity\Product.java
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\config\DataSourceProxyConfig.java
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\ProductServiceApplication.java
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\service\impl\ProductServiceImpl.java
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\config\MybatisPlusConfig.java
+E:\mycode\seata\product-service\src\main\java\com\cbb\seata\controller\ProductController.java

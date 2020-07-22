@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS seata_amount;
+CREATE DATABASE seata_amount;
 CREATE TABLE IF NOT EXISTS seata_amount.`undo_log`
 (
     `branch_id`     BIGINT(20)   NOT NULL COMMENT 'branch transaction id',
@@ -25,6 +27,9 @@ CREATE TABLE seata_amount.account
 
 INSERT INTO seata_amount.account (id, balance) VALUES (1, 100);
 SELECT * FROM seata_amount.account;
+
+DROP DATABASE IF EXISTS seata_order;
+CREATE DATABASE seata_order;
 
 CREATE TABLE IF NOT EXISTS seata_order.`undo_log`
 (
@@ -55,7 +60,10 @@ CREATE TABLE seata_order.orders
 
 SELECT * FROM seata_order.orders;
 
-CREATE TABLE IF NOT EXISTS seata_order.`undo_log`
+DROP DATABASE IF EXISTS seata_storage;
+CREATE DATABASE seata_storage;
+
+CREATE TABLE IF NOT EXISTS seata_storage.`undo_log`
 (
     `branch_id`     BIGINT(20)   NOT NULL COMMENT 'branch transaction id',
     `xid`           VARCHAR(100) NOT NULL COMMENT 'global transaction id',
@@ -69,9 +77,9 @@ CREATE TABLE IF NOT EXISTS seata_order.`undo_log`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8 COMMENT ='AT transaction mode undo table';
 
-DROP TABLE IF EXISTS seata_order.product;
+DROP TABLE IF EXISTS seata_storage.product;
 
-CREATE TABLE seata_order.product
+CREATE TABLE seata_storage.product
 (
     id               INT(11) NOT NULL AUTO_INCREMENT,
     stock            INT(11)  DEFAULT NULL,
@@ -79,6 +87,6 @@ CREATE TABLE seata_order.product
     PRIMARY KEY (id)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8;
 
-INSERT INTO seata_order.product (id, stock) VALUES (1, 10);
+INSERT INTO seata_storage.product (id, stock) VALUES (1, 10);
 
-SELECT * FROM seata_order.product;
+SELECT * FROM seata_storage.product;

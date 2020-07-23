@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     private ProductService productService;
 
     @Override
-    @GlobalTransactional
+    @GlobalTransactional(name = "create-order", timeoutMills = 2000, rollbackFor = Exception.class)
     public CommonResult createOrder(Order order) {
 
         log.info("----->开始新建订单 当前 XID: {}", RootContext.getXID());
